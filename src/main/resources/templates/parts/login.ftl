@@ -28,7 +28,7 @@
                 <input type="password" name="password" class="form-control" placeholder="Password" required/>
             </div>
         </div>
-<#--        <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
         <button type="submit" class="btn btn-primary">${logOrReg}</button>
     </form>
     <div class="mt-1">
@@ -38,7 +38,7 @@
 
 <#macro logout>
     <form action="/logout" method="post">
-<#--        <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
         <button type="submit" class="btn btn-primary">Logout  <i class="fas fa-sign-out-alt"></i>
         </button>
     </form>

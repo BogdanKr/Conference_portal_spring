@@ -15,4 +15,9 @@ public class MainController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping("/welcome")
+    public String welcomePage(){
+        return "welcome";
+    }
 }
