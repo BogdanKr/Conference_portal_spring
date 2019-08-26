@@ -3,7 +3,12 @@
 
 
 <@mymacro.page>
-
+ <#if RequestParameters.logout??>
+        <div class="alert alert-info" align="center">
+            <strong>Logged out!</strong>
+            <br>You have Logged out of Conference portal
+        </div>
+    </#if>
     <h5>Hello ${name} <#if isAdmin>you are ADMIN !</#if></h5>
     You are on Conference portal,<br> here you could view conferences and check for visit
     <#if !user??>

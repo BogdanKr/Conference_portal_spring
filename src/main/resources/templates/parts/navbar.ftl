@@ -23,7 +23,7 @@
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">User list </a>
+                    <a class="nav-link" href="/registration/user_list">User list </a>
                 </li>
             </#if>
 

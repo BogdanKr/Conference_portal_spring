@@ -12,6 +12,7 @@ import ua.krasun.conference_portal.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -27,20 +28,21 @@ public class UserService implements UserDetailsService {
     }
 
     public boolean regUser(User user) {
-        boolean isPresent = Optional.ofNullable(userRepository.findByEmail(user.getEmail())).isPresent();
-        if (!isPresent) {
             if (user.isActive()) user.setRoleType(RoleType.SPEAKER);
             else user.setRoleType(RoleType.USER);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setActive(true);
+        try {
             userRepository.save(user);
-            return true;
-        } else return false;
-
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     public List<User> findByName(String findName) {
-        return Optional.of(userRepository.findByFirstName(findName)).orElse(userRepository.findAll());
+        boolean isPresent = Optional.ofNullable(findName).isPresent();
+        if (isPresent && !findName.isEmpty()) return userRepository.findByFirstName(findName);
+        else return userRepository.findAll();
     }
-
 }

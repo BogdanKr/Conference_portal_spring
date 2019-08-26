@@ -4,13 +4,17 @@
 <@mymacro.page>
     Login page
 
-    <div class="my-3">
-        <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
-            <div class="alert alert-danger" role="alert">
-                ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
-            </div>
-        </#if>
-    </div>
+    <#if RequestParameters.error??>
+        <div class="alert alert-danger" align="center">
+            <strong>Invalid Login!</strong>
+            <br>Invalid username or password
+        </div>
+    <#elseif RequestParameters.logout??>
+        <div class="alert alert-info" align="center">
+            <strong>Logged out!</strong>
+            <br>You have Logged out of Conference portal
+        </div>
+    </#if>
     <#if message??>
         <div class="alert alert-success" role="alert">
             ${message}
