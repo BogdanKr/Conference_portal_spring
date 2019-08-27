@@ -21,13 +21,34 @@
                             <div class="col align-self-center"><a href="/conference/${conference.id}">Edit</a></div>
                         </#if>
                         <#if (isSpeaker && conference.date.isAfter(dateNow))>
-                            <div class="col align-self-center"><a href="/welcome">Add presentation</a></div>
+                            <div class="col align-self-center"><a href="/presentation/${conference.id}">
+                                    Add presentation</a></div>
                         </#if>
                     </div>
                 </div>
 
                 <div class="card-footer text-muted">
-                    Here will be list of projectc
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Speaker</th>
+                            <th>Theme</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <#list conference.presentations! as presentation>
+                            <td>${presentation.author.firstName}</td>
+                            <td>${presentation.theme}</td>
+                            <#if (presentation.author.id==currentUserId || isAdmin)>
+                                <td><a href="/presentation/${conference.id}?presentation=${presentation.id}">Edit </a></td>
+                            </#if>
+                        <#else>
+                            No presentations
+                        </#list>
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         <#else >

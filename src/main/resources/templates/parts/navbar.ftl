@@ -13,10 +13,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="/welcome"><i class="fas fa-home"></i> </a>
             </li>
+            <li class="nav-item">
+                <#if isAdmin>
+                    <a class="nav-link" href="/presentation/all">All presentations </a>
+                </#if>
+                <#if isSpeaker>
+                <a class="nav-link" href="/presentation/all">My presentations </a>
+                </#if>
+            </li>
             <#if user??>
-                <li class="nav-item">
-                    <a class="nav-link" href="/welcome">My some link </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/registration/${user.id}">Edit profile</a>
                 </li>

@@ -29,6 +29,8 @@ public class User implements UserDetails {
     private RoleType roleType;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Conference> conferences;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Presentation> presentations;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

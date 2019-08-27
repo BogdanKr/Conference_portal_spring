@@ -7,9 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Conference {
@@ -23,6 +23,8 @@ public class Conference {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
+    @OneToMany(mappedBy = "conference", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Presentation> presentations;
 
     public Conference(LocalDate date, String subject, User author) {
         this.date = date;

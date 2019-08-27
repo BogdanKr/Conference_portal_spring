@@ -27,7 +27,6 @@ public class ConferenceController {
                                 @RequestParam String subject,
                                 Model model) {
         conferenceService.addConference(localDate, subject, currentUser);
-//        model.addAttribute("conferences", conferenceService.findAll());
         return "redirect:/welcome";
     }
 
