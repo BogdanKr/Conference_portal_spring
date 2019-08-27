@@ -18,12 +18,12 @@
                     <a class="nav-link" href="/messages/${user.id}">My messages </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/registration/edit/${user.id}">Edit profile</a>
+                    <a class="nav-link" href="/registration/${user.id}">Edit profile</a>
                 </li>
             </#if>
             <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link" href="/registration/user_list">User list </a>
+                    <a class="nav-link" href="/registration/userList">User list </a>
                 </li>
             </#if>
 

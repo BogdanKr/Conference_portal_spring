@@ -7,7 +7,7 @@
     <div>Список юзеров</div>
 
     <div>
-        <form method="get" action="/registration/user_list">
+        <form method="get" action="/registration/userList">
             <input type="text" name="findName" placeholder="find with user FirstName" value="${filter!}">
 
             <button type="submit">Find user</button>
@@ -32,7 +32,7 @@
                 <td>${usr.password}</td>
                 <td>${usr.active?then('Active','Not active')}</td>
                 <td>${usr.roleType}</td>
-                <td><a href="/user/${usr.id}">Edit</a> </td>
+                <td><a href="/registration/${usr.id}">Edit</a> </td>
             </tr>
         <#else >
             No user

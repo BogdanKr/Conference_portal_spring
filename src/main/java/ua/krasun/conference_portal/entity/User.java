@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
 
 @Data
 @Builder
@@ -63,4 +64,16 @@ public class User implements UserDetails {
         return isActive();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
