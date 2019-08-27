@@ -7,7 +7,7 @@
     <div>Список юзеров</div>
 
     <div>
-        <form method="get" action="/registration/userList">
+        <form method="get" action="/user/userList">
             <input type="text" name="findName" placeholder="find with user FirstName" value="${filter!}">
 
             <button type="submit">Find user</button>
@@ -16,11 +16,11 @@
     <table>
         <thead>
         <tr>
-            <th>First name</th>
+            <th><a href="/user/sortBy/${"firstName"}">First name</a></th>
             <th>Email</th>
             <th>Password</th>
-            <th>Active</th>
-            <th>Role</th>
+            <th><a href="/user/sortBy/${"active"}">Active</a></th>
+            <th><a href="/user/sortBy/${"roleType"}">Role</a></th>
             <th></th>
         </tr>
         </thead>

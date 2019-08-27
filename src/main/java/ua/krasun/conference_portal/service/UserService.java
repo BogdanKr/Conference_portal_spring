@@ -1,6 +1,7 @@
 package ua.krasun.conference_portal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,7 +14,6 @@ import ua.krasun.conference_portal.repository.UserRepository;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -76,5 +76,9 @@ public class UserService implements UserDetailsService {
             }
         }
         userRepository.save(user);
+    }
+
+    public List<User> sortByName(String param){
+        return userRepository.findAll(new Sort(param));
     }
 }

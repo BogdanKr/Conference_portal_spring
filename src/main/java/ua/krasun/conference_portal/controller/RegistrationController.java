@@ -33,14 +33,6 @@ public class RegistrationController {
         return "login";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("/userList")
-    public String main(@RequestParam(required = false) String findName, Model model) {
-        model.addAttribute("users", userService.findByName(findName));
-        model.addAttribute("filter", findName);
-        return "userList";
-    }
-
     @GetMapping("{user}")
     public String userEditForm(@AuthenticationPrincipal User currentUser,
                                @PathVariable User user, Model model) {
