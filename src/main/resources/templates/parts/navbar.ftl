@@ -2,7 +2,7 @@
 <#import "login.ftl" as mylogin>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Conference Portal</a>
+    <a class="navbar-brand" href="/<#if user??>welcome</#if>">Conference Portal</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
             </li>
             <#if user??>
                 <li class="nav-item">
-                    <a class="nav-link" href="/messages/${user.id}">My messages </a>
+                    <a class="nav-link" href="/welcome">My some link </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/registration/${user.id}">Edit profile</a>
@@ -31,7 +31,7 @@
 
         <div class="navbar-text mr-3"> ${name}</div>
         <#if name!="guest">
-            <div>
+            <div class="mr-3">
                 <@mylogin.logout />
             </div>
         </#if>

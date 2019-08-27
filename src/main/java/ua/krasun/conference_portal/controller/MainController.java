@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.krasun.conference_portal.service.ConferenceService;
 
+import java.time.LocalDate;
+
 @Controller
 public class MainController {
     @Autowired
     ConferenceService conferenceService;
 
-    @GetMapping
+    @GetMapping("/")
     public String mainPage(){
         return "main";
     }
@@ -25,6 +27,7 @@ public class MainController {
     @RequestMapping("/welcome")
     public String welcomePage(Model model){
         model.addAttribute("conferences", conferenceService.findAll() );
+        model.addAttribute("dateNow", LocalDate.now());
         return "welcome";
     }
 

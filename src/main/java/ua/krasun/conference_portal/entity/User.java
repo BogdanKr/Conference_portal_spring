@@ -38,6 +38,9 @@ public class User implements UserDetails {
     public boolean isAdmin() {
         return roleType.equals(RoleType.ADMIN);
     }
+    public boolean isSpeaker() {
+        return roleType.equals(RoleType.SPEAKER);
+    }
 
     @Override
     public String getUsername() {
