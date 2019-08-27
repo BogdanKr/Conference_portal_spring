@@ -1,6 +1,7 @@
 package ua.krasun.conference_portal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,13 @@ public class ConferenceController {
 
     @PostMapping
     public String addConference(@AuthenticationPrincipal User currentUser,
-                                @RequestParam LocalDate date,
+                                @RequestParam("localDate")
+                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate localDate,
                                 @RequestParam String subject,
                                 Model model) {
-        conferenceService.addConference(date, subject, currentUser);
-        model.addAttribute("conferences", conferenceService.findAll());
-        return "welcome";
+        conferenceService.addConference(localDate, subject, currentUser);
+//        model.addAttribute("conferences", conferenceService.findAll());
+        return "redirect:/welcome";
     }
 
     @GetMapping("{conference}")
@@ -37,12 +39,14 @@ public class ConferenceController {
         return "welcome";
     }
 
-    @PostMapping("/{usr}")
-    public String updateMessage(
+    @PostMapping("/{conf}")
+    public String updateConference(
+                                @PathVariable Long conf,
                                 @RequestParam("id") Conference conference,
-                                @RequestParam("date") LocalDate date,
+                                @RequestParam("localDate")
+                                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate localDate,
                                 @RequestParam("subject") String subject) {
-        conferenceService.updateConference( conference, date, subject);
+        conferenceService.updateConference( conference, localDate, subject);
         return "redirect:/welcome";
     }
 }

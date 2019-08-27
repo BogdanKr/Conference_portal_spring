@@ -24,7 +24,7 @@ public class MainController {
 
     @RequestMapping("/welcome")
     public String welcomePage(Model model){
-        model.addAttribute("conferences", conferenceService.findAll());
+        model.addAttribute("conferences", conferenceService.findAll() );
         return "welcome";
     }
 

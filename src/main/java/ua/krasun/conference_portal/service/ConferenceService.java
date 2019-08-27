@@ -7,6 +7,7 @@ import ua.krasun.conference_portal.entity.User;
 import ua.krasun.conference_portal.repository.ConferenceRepository;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -15,7 +16,9 @@ public class ConferenceService {
     ConferenceRepository conferenceRepository;
 
    public  List<Conference> findAll(){
-       return conferenceRepository.findAll();
+       List<Conference> conferenceList = conferenceRepository.findAll();
+       conferenceList.sort(Comparator.comparing(Conference::getDate));
+       return conferenceList;
    }
 
    public void addConference(LocalDate date, String subject, User currentUser){

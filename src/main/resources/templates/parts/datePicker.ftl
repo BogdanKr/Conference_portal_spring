@@ -12,9 +12,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <form class="form-horizontal" method="post" action="/conference">
+                <form class="form-horizontal" method="post" action="/conference<#if conference??>/${conference.id}</#if>">
                     <div class="form-group form-group-sm">
-                        <label class="control-label col-sm-2 requiredField" for="date">
+                        <label class="control-label col-sm-2 requiredField" for="localDate">
                             Date
                             <span class="asteriskField"> * </span>
                         </label>
@@ -24,7 +24,7 @@
                                     <i class="fa fa-calendar">
                                     </i>
                                 </div>
-                                <input class="form-control" id="date" name="date" placeholder="DD.YY.YYYY" type="date"
+                                <input class="form-control" id="localDate" name="localDate" placeholder="DD.YY.YYYY" type="date"
                                        required value="<#if conference??>${conference.date}</#if>"/>
                             </div>
                         </div>
@@ -63,10 +63,10 @@
 
 <script>
     $(document).ready(function () {
-        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var date_input = $('input[name="localDate"]'); //our date input has the name "date"
         var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
-            format: 'dd.mm.yyyy',
+            format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,
             autoclose: true,
