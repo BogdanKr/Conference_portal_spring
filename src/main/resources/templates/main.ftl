@@ -17,13 +17,5 @@
         <a class="btn btn-primary" href="/login" role="button">Login</a>
         <a class="btn btn-primary" href="/registration" role="button">Registration</a>
     </#if>
-<br>
-    <a class="btn btn-primary" href="/testData" role="button">TestDataPicker</a>
-
-
-    <#include "parts/datePicker.ftl">
-
-
-
 
 </@mymacro.page>

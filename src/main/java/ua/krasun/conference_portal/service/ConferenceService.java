@@ -20,7 +20,12 @@ public class ConferenceService {
 
    public void addConference(LocalDate date, String subject, User currentUser){
        Conference conference = new Conference(date.plusDays(1), subject, currentUser);
-
        conferenceRepository.save(conference);
    }
+
+    public void updateConference(Conference conference, LocalDate date, String subject) {
+       conference.setDate(date.plusDays(1));
+       conference.setSubject(subject);
+       conferenceRepository.save(conference);
+    }
 }
