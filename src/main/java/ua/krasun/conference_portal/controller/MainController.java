@@ -20,4 +20,9 @@ public class MainController {
     public String welcomePage(){
         return "welcome";
     }
+
+    @RequestMapping("/testData")
+    public String testData() {
+        return "testData";
+    }
 }
