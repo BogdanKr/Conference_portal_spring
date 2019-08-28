@@ -19,7 +19,7 @@ public class PresentationController {
     PresentationService presentationService;
 
     @GetMapping("/{conference}")
-    public String userEditForm(@PathVariable Conference conference,
+    public String presentationEditForm(@PathVariable Conference conference,
                                Model model,
                                @RequestParam(required = false) Presentation presentation) {
         model.addAttribute("presentation", presentation);
@@ -29,7 +29,7 @@ public class PresentationController {
     }
 
     @PostMapping("/{conference}")
-    public String updateConference(@AuthenticationPrincipal User currentUser,
+    public String updatePresentation(@AuthenticationPrincipal User currentUser,
                                    @PathVariable Conference conference,
                                    @RequestParam("id") Presentation presentation,
                                    @RequestParam("theme") String theme) {
