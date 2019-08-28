@@ -12,38 +12,40 @@
     </#if>
     <div class="card-columns">
         <#list conferences! as conference>
-            <div class="card my-3">
-                <div class="m-2" <#if conference.date.isBefore(dateNow)> style="color: brown" </#if>>
+            <div class="card">
+                <div class="card-header" <#if conference.date.isBefore(dateNow)> style="color: brown" </#if>>
                     <div class="row">
-                        <div class="col align-self-center"> ${conference.date}</div>
-                        <div class="col align-self-center"> ${conference.subject}</div>
+                        <div class="col-5"> ${conference.date}</div>
+                        <div class="col"> ${conference.subject}</div>
                         <#if isAdmin>
-                            <div class="col align-self-center"><a href="/conference/${conference.id}">Edit</a></div>
+                            <div class="col-md-autor"><a href="/conference/${conference.id}">Edit</a></div>
                         </#if>
                         <#if (isSpeaker && conference.date.isAfter(dateNow))>
-                            <div class="col align-self-center"><a href="/presentation/${conference.id}">
+                            <div class="col-md-auto"><a href="/presentation/${conference.id}">
                                     Add presentation</a></div>
                         </#if>
                     </div>
                 </div>
 
-                <div class="card-footer text-muted">
+                <div class="card-body text-muted">
                     <table>
                         <thead>
                         <tr>
                             <th>Speaker</th>
-                            <th>Theme</th>
+                            <th style="padding-left: 10px">Theme</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <#list conference.presentations! as presentation>
                             <tr>
-                            <td>${presentation.author.firstName}</td>
-                            <td>${presentation.theme}</td>
-                            <#if (presentation.author.id==currentUserId || isAdmin)>
-                                <td><a href="/presentation/${conference.id}?presentation=${presentation.id}">Edit </a></td>
-                            </#if>
+                                <td>${presentation.author.firstName}</td>
+                                <td>${presentation.theme}</td>
+                                <#if (presentation.author.id==currentUserId || isAdmin)>
+                                    <td>
+                                        <a href="/presentation/${conference.id}?presentation=${presentation.id}">Edit </a>
+                                    </td>
+                                </#if>
                             </tr>
                         <#else>
                             No presentations
@@ -51,6 +53,9 @@
                         </tbody>
                     </table>
 
+                </div>
+                <div class="card-footer text-muted">
+                    registration area
                 </div>
             </div>
         <#else >

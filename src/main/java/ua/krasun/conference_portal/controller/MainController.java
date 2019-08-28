@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.krasun.conference_portal.service.ConferenceService;
+import ua.krasun.conference_portal.service.PresentationService;
 
 import java.time.LocalDate;
 
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 public class MainController {
     @Autowired
     ConferenceService conferenceService;
+    @Autowired
+    PresentationService presentationService;
 
     @GetMapping("/")
     public String mainPage(){

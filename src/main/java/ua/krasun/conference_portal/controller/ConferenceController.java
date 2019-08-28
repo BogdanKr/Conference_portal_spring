@@ -34,6 +34,7 @@ public class ConferenceController {
     public String userEditForm(@PathVariable Conference conference, Model model) {
 
         model.addAttribute("conference", conference);
+        model.addAttribute("dateNow", LocalDate.now());
         model.addAttribute("conferences", conferenceService.findAll());
         return "welcome";
     }

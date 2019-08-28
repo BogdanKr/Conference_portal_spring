@@ -7,6 +7,7 @@ import ua.krasun.conference_portal.entity.Presentation;
 import ua.krasun.conference_portal.entity.User;
 import ua.krasun.conference_portal.repository.PresentationRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,12 +29,14 @@ public class PresentationService {
     }
 
     public List<Presentation> findAll() {
-        return presentationRepository.findAll();
+        List<Presentation> presentationList = presentationRepository.findAll();
+        presentationList.sort((o1, o2) -> o1.getConference().getDate().compareTo(o2.getConference().getDate()));
+        return presentationList;
     }
 
 
     public List<Presentation> findByUser(User user) {
-        if (user.isAdmin()) return presentationRepository.findAll();
+        if (user.isAdmin()) return findAll();
         else return presentationRepository.findAll().stream()
                 .filter(presentation -> presentation.getAuthor().equals(user))
                 .collect(Collectors.toList());

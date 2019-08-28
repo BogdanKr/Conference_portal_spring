@@ -24,7 +24,7 @@
                                     <i class="fa fa-calendar">
                                     </i>
                                 </div>
-                                <input class="form-control" id="localDate" name="localDate" placeholder="DD.YY.YYYY" type="date"
+                                <input class="form-control" id="localDate" name="localDate" placeholder="YYYY-MM-DD" type="date"
                                        required value="<#if conference??>${conference.date}</#if>"/>
                             </div>
                         </div>
