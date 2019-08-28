@@ -47,6 +47,7 @@
                                     </td>
                                 </#if>
 
+
                             </tr>
                         <#else>
                             No presentations
