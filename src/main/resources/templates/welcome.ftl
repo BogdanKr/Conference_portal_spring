@@ -10,10 +10,12 @@
     <#if isAdmin>
         <#include "parts/datePicker.ftl">
     </#if>
-    <div class="card-columns">
+
+
+    <div class="card-columns" >
         <#list conferences! as conference>
-            <div class="card">
-                <div class="card-header" <#if conference.date.isBefore(dateNow)> style="color: brown" </#if>>
+            <div class="card<#if conference.date.isBefore(dateNow)> text-white bg-secondary mb-3 </#if>">
+                <div class="card-header ">
                     <div class="row">
                         <div class="col-5"> ${conference.date}</div>
                         <div class="col"> ${conference.subject}</div>
@@ -27,7 +29,7 @@
                     </div>
                 </div>
 
-                <div class="card-body text-muted">
+                <div class="card-body ">
                     <table class="table table-hover table-sm">
                         <thead>
                         <tr>
@@ -56,14 +58,28 @@
                     </table>
 
                 </div>
-                <div class="card-footer text-muted">
-                    registration area
+                <div class="card-footer ">
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="/conference/${conference.id}/like" style="color: #b10821">
+                                <#if conference.meRegistered>
+                                    <i class="fas fa-registered">Registrated </i>
+                                <#else>
+                                    <i class="far fa-registered"> </i>
+                                </#if>
+                            </a>
+                        </div>
+                        <div class="col-4">
+                            ${conference.registrations}
+                        </div>
+                    </div>
                 </div>
             </div>
         <#else >
             No conferences
         </#list>
     </div>
+
 
 
 </@mymacro.page>

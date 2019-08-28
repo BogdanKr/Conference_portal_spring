@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -25,6 +26,11 @@ public class Conference {
     private User author;
     @OneToMany(mappedBy = "conference", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Presentation> presentations;
+    @ManyToMany
+    @JoinTable(name = "conference_registrations",
+            joinColumns = {@JoinColumn(name = "conference_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private List<User> registrations = new ArrayList<>();
 
     public Conference(LocalDate date, String subject, User author) {
         this.date = date;
