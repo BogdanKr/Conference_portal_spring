@@ -38,11 +38,13 @@
                         </thead>
                         <tbody>
                         <#list conference.presentations! as presentation>
+                            <tr>
                             <td>${presentation.author.firstName}</td>
                             <td>${presentation.theme}</td>
                             <#if (presentation.author.id==currentUserId || isAdmin)>
                                 <td><a href="/presentation/${conference.id}?presentation=${presentation.id}">Edit </a></td>
                             </#if>
+                            </tr>
                         <#else>
                             No presentations
                         </#list>
