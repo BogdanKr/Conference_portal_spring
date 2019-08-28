@@ -46,6 +46,7 @@
                                         <a href="/presentation/${conference.id}?presentation=${presentation.id}">Edit </a>
                                     </td>
                                 </#if>
+
                             </tr>
                         <#else>
                             No presentations
