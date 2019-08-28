@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="card-body text-muted">
-                    <table>
+                    <table class="table table-hover table-sm">
                         <thead>
                         <tr>
                             <th>Speaker</th>
@@ -36,13 +36,13 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="color: blue">
                         <#list conference.presentations! as presentation>
                             <tr>
                                 <td>${presentation.author.firstName}</td>
                                 <td>${presentation.theme}</td>
                                 <#if (presentation.author.id==currentUserId || isAdmin)>
-                                    <td>
+                                    <td style="text-align: right">
                                         <a href="/presentation/${conference.id}?presentation=${presentation.id}">Edit </a>
                                     </td>
                                 </#if>

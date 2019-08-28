@@ -18,7 +18,7 @@
                     <a class="nav-link" href="/presentation/all">All presentations </a>
                 </#if>
                 <#if isSpeaker>
-                <a class="nav-link" href="/presentation/all">My presentations </a>
+                    <a class="nav-link" href="/presentation/all">My presentations </a>
                 </#if>
             </li>
             <#if user??>
