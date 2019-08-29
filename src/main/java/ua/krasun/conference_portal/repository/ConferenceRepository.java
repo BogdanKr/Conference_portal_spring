@@ -1,5 +1,6 @@
 package ua.krasun.conference_portal.repository;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -18,7 +19,7 @@ public interface ConferenceRepository extends CrudRepository<Conference, Long> {
             ") " +
             "from Conference c left join c.registrations cl " +
             "group by c")
-    List<ConferenceDto> findAll(@Param("user") User user);
+    List<ConferenceDto> findAllAndSort(@Param("user") User user, Sort sort);
 
     @Query("select new ua.krasun.conference_portal.entity.dto.ConferenceDto(" +
             "   c, " +
@@ -29,5 +30,6 @@ public interface ConferenceRepository extends CrudRepository<Conference, Long> {
             "where c.author = :author " +
             "group by c")
     List<ConferenceDto> findByUser(@Param("author") User author, @Param("user") User user);
+
 
 }

@@ -14,7 +14,7 @@
 
     <div class="card-columns" >
         <#list conferences! as conference>
-            <div class="card<#if conference.date.isBefore(dateNow)> text-white bg-secondary mb-3 </#if>">
+            <div class="card<#if conference.date.isBefore(dateNow)> border-danger mb-3 </#if>">
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-5"> ${conference.date}</div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="card-body ">
-                    <table class="table table-hover table-sm">
+                    <table class="table table-sm">
                         <thead>
                         <tr>
                             <th>Speaker</th>

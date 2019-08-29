@@ -1,7 +1,5 @@
 package ua.krasun.conference_portal.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +12,11 @@ import java.util.Map;
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
-    @Autowired
-    UserService userService;
+    private final UserService userService;
+
+    public RegistrationController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
     public String registration() {

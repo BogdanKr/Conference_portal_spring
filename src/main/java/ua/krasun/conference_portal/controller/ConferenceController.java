@@ -1,6 +1,5 @@
 package ua.krasun.conference_portal.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,14 +13,24 @@ import ua.krasun.conference_portal.entity.Conference;
 import ua.krasun.conference_portal.entity.User;
 import ua.krasun.conference_portal.service.ConferenceService;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
+import java.util.TimeZone;
 
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/conference")
 public class ConferenceController {
-    @Autowired
-    ConferenceService conferenceService;
+    private final ConferenceService conferenceService;
+
+    public ConferenceController(ConferenceService conferenceService) {
+        this.conferenceService = conferenceService;
+    }
+
+    @PostConstruct
+    public void init() {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
 
     @PostMapping
     public String addConference(@AuthenticationPrincipal User currentUser,
@@ -63,8 +72,7 @@ public class ConferenceController {
         conferenceService.registration(currentUser, conference);
         UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(referer).build();
         uriComponents.getQueryParams()
-                .entrySet()
-                .forEach(pair -> redirectAttributes.addAttribute(pair.getKey(), pair.getValue()));
+                .forEach(redirectAttributes::addAttribute);
         return "redirect:" + uriComponents.getPath();
     }
 }

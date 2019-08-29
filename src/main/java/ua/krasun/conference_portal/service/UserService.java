@@ -1,6 +1,5 @@
 package ua.krasun.conference_portal.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,15 +16,19 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
-    @Autowired
+    private final
     UserRepository userRepository;
-    @Autowired
+    private final
     PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return Optional.ofNullable(userRepository.findByEmail(email))
-                .orElseThrow(() -> new UsernameNotFoundException("Wrong input!!"));
+        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Wrong input!!"));
     }
 
     public boolean regUser(User user) {
@@ -78,7 +81,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public List<User> sortByName(String param){
+    public List<User> sortBy(String param){
         return userRepository.findAll(new Sort(param));
     }
 }

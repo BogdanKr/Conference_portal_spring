@@ -1,6 +1,5 @@
 package ua.krasun.conference_portal.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -15,8 +14,11 @@ import ua.krasun.conference_portal.service.PresentationService;
 @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('SPEAKER')")
 @RequestMapping("/presentation")
 public class PresentationController {
-    @Autowired
-    PresentationService presentationService;
+    private final PresentationService presentationService;
+
+    public PresentationController(PresentationService presentationService) {
+        this.presentationService = presentationService;
+    }
 
     @GetMapping("/{conference}")
     public String presentationEditForm(@PathVariable Conference conference,

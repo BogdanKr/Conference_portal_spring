@@ -1,6 +1,5 @@
 package ua.krasun.conference_portal.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +13,11 @@ import ua.krasun.conference_portal.service.UserService;
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/userList")
     public String main(@RequestParam(required = false) String findName, Model model) {
@@ -26,7 +28,7 @@ public class UserController {
 
     @GetMapping("/sortBy/{param}")
     public String sortByName(@PathVariable String param, Model model) {
-        model.addAttribute("users", userService.sortByName(param));
+        model.addAttribute("users", userService.sortBy(param));
         return "userList";
     }
 }
