@@ -15,7 +15,7 @@
                 <form class="form-horizontal" method="post" action="/conference<#if conference??>/${conference.id}</#if>">
                     <div class="form-group form-group-sm">
                         <label class="control-label col-sm-2 requiredField" for="localDate">
-                            Date
+                            <@spring.message "date"/>
                             <span class="asteriskField"> * </span>
                         </label>
                         <div class="col-sm-10">
@@ -24,14 +24,14 @@
                                     <i class="fa fa-calendar">
                                     </i>
                                 </div>
-                                <input class="form-control" id="localDate" name="localDate" placeholder="YYYY-MM-DD" type="date"
+                                <input class="form-control" id="localDate" name="localDate" placeholder="<@spring.message "date_format"/>" type="date"
                                        required value="<#if conference??>${conference.date}</#if>"/>
                             </div>
                         </div>
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="control-label col-sm-2 requiredField" for="subject">
-                            Subject
+                            <@spring.message "subject"/>
                             <span class="asteriskField"> * </span>
                         </label>
                         <div class="col-sm-10">
@@ -44,7 +44,7 @@
                             <input type="hidden" name="_csrf" value="${_csrf.token}">
                             <input type="hidden" name="id" value="<#if conference??>${conference.id}</#if>"/>
                             <button class="btn btn-primary btn-sm" name="submit" type="submit">
-                                Add conference day
+                                <@spring.message "add_conference"/>
                             </button>
                         </div>
                     </div>

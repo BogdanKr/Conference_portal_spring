@@ -8,7 +8,5 @@ import java.util.List;
 
 public interface PresentationRepository extends JpaRepository<Presentation, Long> {
 
-//    @Query("from Presentation p where p.author = :author")
     List<Presentation> findByAuthor(User author);
-
 }

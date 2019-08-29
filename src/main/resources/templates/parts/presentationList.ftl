@@ -3,9 +3,9 @@
 <table>
     <thead>
     <tr>
-        <th>Conference day</th>
-        <th>Speaker</th>
-        <th>Theme</th>
+        <th><@spring.message "conference_day"/></th>
+        <th><@spring.message "speaker"/> </th>
+        <th><@spring.message "theme"/> </th>
         <th></th>
     </tr>
     </thead>
@@ -16,12 +16,12 @@
             <td>${presentation.author.firstName}</td>
             <td>${presentation.theme}</td>
             <#if (presentation.author.id==currentUserId || isAdmin)>
-                <td><a href="/presentation/${presentation.conference.id}?presentation=${presentation.id}">Edit</a></td>
+                <td><a href="/presentation/${presentation.conference.id}?presentation=${presentation.id}"><@spring.message "edit"/></a></td>
             </#if>
 
         </tr>
     <#else >
-        No Message
+        <@spring.message "no_presentations"/>
     </#list>
     </tbody>
 </table>

@@ -16,10 +16,9 @@ import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
-    private final
-    UserRepository userRepository;
-    private final
-    PasswordEncoder passwordEncoder;
+    private static String WRONG_INPUT = "Wrong input!!";
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -28,7 +27,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Wrong input!!"));
+        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(WRONG_INPUT));
     }
 
     public boolean regUser(User user) {

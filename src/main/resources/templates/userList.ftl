@@ -4,23 +4,23 @@
 
 <@mymacro.page>
 
-    <div>Список юзеров</div>
+    <div><@spring.message "user_list"/></div>
 
     <div>
         <form method="get" action="/user/userList">
             <input type="text" name="findName" placeholder="find with user FirstName" value="${filter!}">
 
-            <button type="submit">Find user</button>
+            <button type="submit"><@spring.message "find_user"/></button>
         </form>
     </div>
     <table>
         <thead>
         <tr>
-            <th><a href="/user/sortBy/${"firstName"}">First name</a></th>
-            <th>Email</th>
-            <th>Password</th>
-            <th><a href="/user/sortBy/${"active"}">Active</a></th>
-            <th><a href="/user/sortBy/${"roleType"}">Role</a></th>
+            <th><a href="/user/sortBy/${"firstName"}"><@spring.message "first_name"/></a></th>
+            <th><@spring.message "email"/></th>
+            <th><@spring.message "password"/></th>
+            <th><a href="/user/sortBy/${"active"}"><@spring.message "active"/></a></th>
+            <th><a href="/user/sortBy/${"roleType"}"><@spring.message "role"/></a></th>
             <th></th>
         </tr>
         </thead>
@@ -32,10 +32,10 @@
                 <td>${usr.password}</td>
                 <td>${usr.active?then('Active','Not active')}</td>
                 <td>${usr.roleType}</td>
-                <td><a href="/registration/${usr.id}">Edit</a> </td>
+                <td><a href="/registration/${usr.id}"><@spring.message "edit"/></a> </td>
             </tr>
         <#else >
-            No user
+            <@spring.message "no_user"/>
         </#list>
         </tbody>
     </table>

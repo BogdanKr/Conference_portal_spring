@@ -2,17 +2,17 @@
 <#import "parts/login.ftl" as mylogin>
 
 <@mymacro.page>
-    Login page
+    <@spring.message "login_page"/>
 
     <#if RequestParameters.error??>
         <div class="alert alert-danger" align="center">
-            <strong>Invalid Login!</strong>
-            <br>Invalid username or password
+            <strong><@spring.message "invalid_login"/></strong>
+            <br><@spring.message "invalid_name_password"/>
         </div>
     <#elseif RequestParameters.logout??>
         <div class="alert alert-info" align="center">
-            <strong>Logged out!</strong>
-            <br>You have Logged out of Conference portal
+            <strong><@spring.message "logout"/></strong>
+            <br><@spring.message "you_logged_out"/>
         </div>
     </#if>
     <#if message??>

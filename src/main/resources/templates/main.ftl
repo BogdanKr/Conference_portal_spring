@@ -5,17 +5,17 @@
 <@mymacro.page>
  <#if RequestParameters.logout??>
         <div class="alert alert-info" align="center">
-            <strong>Logged out!</strong>
-            <br>You have Logged out of Conference portal
+            <strong><@spring.message "logout"/></strong>
+            <br><@spring.message "you_logged_out"/>
         </div>
     </#if>
-    <h5>Hello ${name} <#if isAdmin>you are ADMIN !</#if></h5>
-    You are on Conference portal,<br> here you could view conferences and check for visit
+    <h5> ${name} <#if isAdmin><@spring.message "greeting_admin"/></#if></h5>
+    <@spring.message "welcome_info"/>
     <#if !user??>
-        <br> but login or register before please
+        <br> <@spring.message "please_login"/>
         <br>
-        <a class="btn btn-primary" href="/login" role="button">Login</a>
-        <a class="btn btn-primary" href="/registration" role="button">Registration</a>
+        <a class="btn btn-primary" href="/login" role="button"><@spring.message "login"/></a>
+        <a class="btn btn-primary" href="/registration" role="button"><@spring.message "registration"/></a>
     </#if>
 
 </@mymacro.page>
