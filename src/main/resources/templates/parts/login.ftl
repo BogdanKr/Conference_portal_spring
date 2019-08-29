@@ -29,7 +29,9 @@
             </div>
         </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <button type="submit" class="btn btn-primary">${logOrReg}</button>
+        <button type="submit" class="btn btn-primary">
+            <#if !isRegisterForm><@spring.message "login"/><#else ><@spring.message "registration"/></#if>
+        </button>
     </form>
     <div class="mt-1">
         <#if !isRegisterForm><a href="/registration"><@spring.message "add_new_user"/></a></#if>
