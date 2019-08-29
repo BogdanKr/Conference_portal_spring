@@ -6,7 +6,6 @@
     <head>
         <meta charset="UTF-8">
         <title><@spring.message "title"/></title>
-        <link rel="stylesheet" href="/style.css">
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,8 +16,10 @@
               integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
               crossorigin="anonymous">
 
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body>
+
     <#include "navbar.ftl">
     <div class="container mt-5">
 

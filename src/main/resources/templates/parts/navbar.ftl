@@ -36,10 +36,10 @@
 
         <div class="navbar-text mr-3"> ${name}</div>
         <a href="?lang=ua">
-            UKR
+            <img alt="Українська" height="32" src="/static/UA.ico" title="Ukrainian" width="32">
         </a>
         <a href="?lang=en">
-            ENG
+            <img alt="Англійська" height="32" src="/static/United-Kingdom.ico" title="English" width="32">
         </a>
         <#if name!="guest">
             <div class="mr-3">

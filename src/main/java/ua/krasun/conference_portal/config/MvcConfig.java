@@ -14,16 +14,16 @@ import java.util.Locale;
 
 @Configuration
 public class MvcConfig  implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/");
+    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/error").setViewName("error");
-    }
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**","/static/js/**")
-                .addResourceLocations("classpath:/static/");
     }
 
     @Bean
