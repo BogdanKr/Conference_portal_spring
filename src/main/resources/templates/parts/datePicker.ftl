@@ -24,7 +24,7 @@
                                     <i class="fa fa-calendar">
                                     </i>
                                 </div>
-                                <input class="form-control" id="localDate" name="localDate" placeholder="<@spring.message "date_format"/>" type="date"
+                                <input class="form-control" id="localDate" name="localDate" placeholder="<@spring.message "date_format"/>" type="text"
                                        required value="<#if conference??>${conference.date}</#if>"/>
                             </div>
                         </div>
@@ -63,9 +63,10 @@
 
 <script>
     $(document).ready(function () {
-        var date_input = $('input[name="localDate"]'); //our date input has the name "date"
+        var date_input = $('input[name="localDate"]'); //our date input has the name "localDate"
         var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
+            language: "ru",
             format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,

@@ -19,7 +19,7 @@ public class ConferenceService {
     }
 
     public List<ConferenceDto> findAll(User currentUser) {
-        return conferenceRepository.findAllAndSort(currentUser, new Sort("date"));
+        return conferenceRepository.findAllAndSort(currentUser, Sort.by(Sort.Direction.ASC, "date"));
     }
 
     public void addConference(LocalDate date, String subject, User currentUser) {
