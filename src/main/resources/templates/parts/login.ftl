@@ -11,21 +11,21 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label"> <@spring.message "first_name"/> </label>
                 <div class="col-sm-4">
-                    <input type="text" name="firstName" class="form-control" placeholder="First name" required/>
+                    <input type="text" name="firstName" class="form-control" placeholder="<@spring.message "first_name"/>" required/>
                 </div>
             </div>
         </#if>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> <@spring.message "email"/> </label>
             <div class="col-sm-4">
-                <input type="email" name="email" class="form-control" placeholder="Email" required autofocus/>
+                <input type="email" name="email" class="form-control" placeholder="<@spring.message "email"/>" required autofocus/>
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> <@spring.message "password"/> </label>
             <div class="col-sm-4 ">
-                <input type="password" name="password" class="form-control" placeholder="Password" required/>
+                <input type="password" name="password" class="form-control" placeholder="<@spring.message "password"/>" required/>
             </div>
         </div>
         <input type="hidden" name="_csrf" value="${_csrf.token}">
