@@ -20,6 +20,14 @@
                     <td>${conference.date}</td>
                     <td>${conference.subject}</td>
                     <td style="text-align: center"> ${conference.registrations}</td>
+                    <td><a href="/conference/${conference.id}/like" style="color: #b10821">
+                            <#if conference.meRegistered>
+                                <i class="fas fa-registered"><@spring.message "registered"/> </i>
+                            <#else>
+                                <i class="far fa-registered"> </i>
+                            </#if>
+                        </a>
+                    </td>
                     <#if (isAdmin)>
                         <td><a href="/conference/${conference.id}"><@spring.message "edit"/></a></td>
                     </#if>
@@ -27,10 +35,6 @@
             <#else>
                 <@spring.message "no_conferences"/>
             </#list>
-        </#if>
-
-        <#if conferenceRegistrations??>
-            <#include "parts/userRegistrations.ftl">
         </#if>
 
         </tbody>

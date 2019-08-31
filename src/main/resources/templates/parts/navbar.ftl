@@ -14,18 +14,19 @@
                 <a class="nav-link" href="/welcome"><i class="fas fa-home"></i> </a>
             </li>
             <#if user??>
-            <li class="nav-item"><a class="nav-link" href="/conference_all"><@spring.message "all_conferences"/> </a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="/presentation/"><@spring.message "all_presentations"/> </a>
-            </li>
-            </#if>
-            <#if isSpeaker>
-                <li class="nav-item"> <a class="nav-link" href="/presentation/all_my"><@spring.message "my_presentations"/></a></li>
-            </#if>
-
-            <#if user??>
-                <li class="nav-item"><a class="nav-link" href="/my_registrations"><@spring.message "my_registrations"/> </a>
+                <li class="nav-item"><a class="nav-link"
+                                        href="/conference_all"><@spring.message "all_conferences"/> </a>
                 </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="/my_registrations"><@spring.message "my_registrations"/> </a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="/presentation/"><@spring.message "all_presentations"/> </a>
+                </li>
+                <#if isSpeaker>
+                    <li class="nav-item"><a class="nav-link"
+                                            href="/presentation/all_my"><@spring.message "my_presentations"/></a></li>
+                </#if>
                 <li class="nav-item">
                     <a class="nav-link" href="/registration/${user.id}"><@spring.message "edit_profile"/></a>
                 </li>
