@@ -21,7 +21,7 @@
     <body>
 
     <#include "navbar.ftl">
-    <div class="container mt-5">
+    <div class="container mt-2 pl-0">
 
         <#nested>
 

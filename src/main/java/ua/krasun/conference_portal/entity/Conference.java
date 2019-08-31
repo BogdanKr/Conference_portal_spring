@@ -23,6 +23,7 @@ public class Conference {
 
     private LocalDate date;
     private String subject;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;

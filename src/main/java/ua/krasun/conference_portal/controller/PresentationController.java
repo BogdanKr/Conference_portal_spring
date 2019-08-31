@@ -38,10 +38,18 @@ public class PresentationController {
         presentationService.addOrUpdate(currentUser, presentation, theme, conference);
         return "redirect:/welcome";
     }
+
     @GetMapping("/all")
     public String myPresentations(@AuthenticationPrincipal User currentUser,
                                Model model) {
         model.addAttribute("presentations", presentationService.findByUser(currentUser));
+        return "presentationEdit";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN') || hasAuthority('SPEAKER')||hasAuthority('USER')")
+    @GetMapping("/")
+    public String allPresentations(Model model) {
+        model.addAttribute("presentations", presentationService.findAll());
         return "presentationEdit";
     }
 }

@@ -1,5 +1,9 @@
 package ua.krasun.conference_portal.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,11 +25,9 @@ import java.util.TimeZone;
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/conference")
 public class ConferenceController {
-    private final ConferenceService conferenceService;
+    @Autowired
+    ConferenceService conferenceService;
 
-    public ConferenceController(ConferenceService conferenceService) {
-        this.conferenceService = conferenceService;
-    }
 
     @PostConstruct
     public void init() {
@@ -44,11 +46,13 @@ public class ConferenceController {
 
     @GetMapping("{conference}")
     public String userEditForm(@AuthenticationPrincipal User currentUser,
-                               @PathVariable Conference conference, Model model) {
+                               @PathVariable Conference conference, Model model,
+                               @PageableDefault(sort = {"date"}, direction = Sort.Direction.DESC, size = 6) Pageable pageable) {
 
         model.addAttribute("conference", conference);
         model.addAttribute("dateNow", LocalDate.now());
-        model.addAttribute("conferences", conferenceService.findAll(currentUser));
+        model.addAttribute("conferences", conferenceService.findAll(currentUser, pageable));
+        model.addAttribute("url", "/conference/" + conference.getId());
         return "welcome";
     }
 

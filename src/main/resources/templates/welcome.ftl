@@ -1,4 +1,5 @@
 <#import "parts/common.ftl" as mymacro>
+<#import "parts/pager.ftl" as p>
 <#include "parts/security.ftl">
 
 <@mymacro.page>
@@ -14,15 +15,17 @@
         <#include "parts/datePicker.ftl">
     </#if>
 
-    <div class="card-columns" >
-        <#list conferences! as conference>
-            <div class="card<#if conference.date.isBefore(dateNow)> border-danger mb-3 </#if>">
+    <@p.pager url conferences/>
+    <div class="card-columns">
+        <#list conferences.content! as conference>
+            <div class="card<#if conference.date.isBefore(dateNow)> border-danger mb-3</#if>">
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-5"> ${conference.date}</div>
-                        <div class="col"> ${conference.subject}</div>
+                        <div class="col pr-0 pl-0"> ${conference.subject}</div>
                         <#if isAdmin>
-                            <div class="col-md-autor"><a href="/conference/${conference.id}"><@spring.message "edit"/></a></div>
+                            <div class="col-md-autor"><a
+                                        href="/conference/${conference.id}"><@spring.message "edit"/></a></div>
                         </#if>
                         <#if (isSpeaker && conference.date.isAfter(dateNow))>
                             <div class="col-md-auto"><a href="/presentation/${conference.id}">
@@ -79,6 +82,8 @@
             <@spring.message "no_conferences"/>
         </#list>
     </div>
+    <@p.pager url conferences/>
+
 
 
 

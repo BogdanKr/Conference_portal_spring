@@ -16,6 +16,8 @@
             <li class="nav-item">
                 <#if isAdmin>
                     <a class="nav-link" href="/presentation/all"><@spring.message "all_presentations"/> </a>
+                <#else >
+            <li class="nav-item"><a class="nav-link" href="/presentation/"><@spring.message "all_presentations"/> </a></li>
                 </#if>
                 <#if isSpeaker>
                     <a class="nav-link" href="/presentation/all"><@spring.message "my_presentations"/></a>

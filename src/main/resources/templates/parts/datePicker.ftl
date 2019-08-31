@@ -6,19 +6,22 @@
     .bootstrap-iso form button, .bootstrap-iso form button:hover {
         color: white !important;}
     .asteriskField {
-        color: red;}</style>
+        color: red;}
+    .bootstrap-iso .form-group {
+        margin-bottom: 5px;
+    }</style>
 
 <div class="bootstrap-iso">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <form class="form-horizontal" method="post" action="/conference<#if conference??>/${conference.id}</#if>">
                     <div class="form-group form-group-sm">
-                        <label class="control-label col-sm-2 requiredField" for="localDate">
+                        <label class="control-label col-sm-1 requiredField" for="localDate">
                             <@spring.message "date"/>
                             <span class="asteriskField"> * </span>
                         </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-2">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar">
@@ -28,18 +31,16 @@
                                        required value="<#if conference??>${conference.date}</#if>"/>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group form-group-sm">
-                        <label class="control-label col-sm-2 requiredField" for="subject">
+                        <label class="control-label col-sm-1 requiredField" for="subject">
                             <@spring.message "subject"/>
                             <span class="asteriskField"> * </span>
                         </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <input class="form-control" id="subject" name="subject" type="text" required
                                    value="<#if conference??>${conference.subject}</#if>"/>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-1">
                         <div class="col-sm-10 col-sm-offset-2">
                             <input type="hidden" name="_csrf" value="${_csrf.token}">
                             <input type="hidden" name="id" value="<#if conference??>${conference.id}</#if>"/>
@@ -66,7 +67,7 @@
         var date_input = $('input[name="localDate"]'); //our date input has the name "localDate"
         var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
         date_input.datepicker({
-            language: "ru",
+            // language: "ru",
             format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,

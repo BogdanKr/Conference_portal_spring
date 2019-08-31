@@ -39,7 +39,6 @@ public class PresentationService {
         return presentationList;
     }
 
-
     public List<Presentation> findByUser(User user) {
         if (user.isAdmin()) return findAll();
         else return presentationRepository.findAll().stream()
