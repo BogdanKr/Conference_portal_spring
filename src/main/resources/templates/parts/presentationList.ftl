@@ -17,6 +17,7 @@
             <td>${presentation.theme}</td>
             <#if (presentation.author.id==currentUserId || isAdmin)>
                 <td><a href="/presentation/${presentation.conference.id}?presentation=${presentation.id}"><@spring.message "edit"/></a></td>
+                <td><a class="ml-2" href="/presentation/delete/${presentation.id}">Delete</a></td>
             </#if>
 
         </tr>

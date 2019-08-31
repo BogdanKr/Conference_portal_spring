@@ -44,4 +44,8 @@ public class PresentationService {
 //                .filter(presentation -> presentation.getAuthor().equals(user))
 //                .collect(Collectors.toList());
     }
+
+    public void deletePresentation(Presentation presentation) {
+        presentationRepository.delete(presentation);
+    }
 }

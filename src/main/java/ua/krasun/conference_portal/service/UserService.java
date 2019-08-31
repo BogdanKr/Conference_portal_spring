@@ -81,6 +81,6 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> sortBy(String param){
-        return userRepository.findAll(new Sort(param));
+        return userRepository.findAll(Sort.by(Sort.Direction.ASC, param));
     }
 }

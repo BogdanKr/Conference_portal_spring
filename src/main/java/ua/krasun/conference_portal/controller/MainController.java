@@ -1,5 +1,6 @@
 package ua.krasun.conference_portal.controller;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,6 +12,7 @@ import ua.krasun.conference_portal.entity.User;
 import ua.krasun.conference_portal.service.ConferenceService;
 
 import org.springframework.data.domain.Pageable;
+
 import java.time.LocalDate;
 
 @Controller
@@ -22,7 +24,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String mainPage(){
+    public String mainPage() {
         return "main";
     }
 
@@ -34,8 +36,8 @@ public class MainController {
     @RequestMapping("/welcome")
     public String welcomePage(@AuthenticationPrincipal User currentUser,
                               Model model,
-                              @PageableDefault(sort = {"date"}, direction = Sort.Direction.DESC, size = 6) Pageable pageable){
-        model.addAttribute("conferences", conferenceService.findAll(currentUser, pageable) );
+                              @PageableDefault(sort = {"date"}, direction = Sort.Direction.DESC, size = 6) Pageable pageable) {
+        model.addAttribute("conferences", conferenceService.findAll(currentUser, pageable));
         model.addAttribute("dateNow", LocalDate.now());
         model.addAttribute("url", "/welcome");
         return "welcome";
@@ -45,6 +47,13 @@ public class MainController {
     public String shoeAllConferences(@AuthenticationPrincipal User currentUser, Model model,
                                      Pageable pageable) {
         model.addAttribute("conferences", conferenceService.findAll(currentUser, pageable));
+        return "conferencesList";
+    }
+
+    @RequestMapping("/my_registrations")
+    public String userRegistrations(@AuthenticationPrincipal User currentUser,
+                                    Model model, Pageable pageable) {
+        model.addAttribute("conferences", conferenceService.findUserRegistrations(currentUser, pageable));
         return "conferencesList";
     }
 }

@@ -1,9 +1,7 @@
 package ua.krasun.conference_portal.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ua.krasun.conference_portal.entity.Conference;
 import ua.krasun.conference_portal.entity.User;
@@ -14,8 +12,11 @@ import java.time.LocalDate;
 
 @Service
 public class ConferenceService {
-    @Autowired
-    ConferenceRepository conferenceRepository;
+    private final ConferenceRepository conferenceRepository;
+
+    public ConferenceService(ConferenceRepository conferenceRepository) {
+        this.conferenceRepository = conferenceRepository;
+    }
 
     public Page<ConferenceDto> findAll(User currentUser, Pageable pageable) {
         return conferenceRepository.findAll(currentUser, pageable);
@@ -43,5 +44,9 @@ public class ConferenceService {
             conference.getRegistrations().add(currentUser);
         }
         conferenceRepository.save(conference);
+    }
+
+    public Page<ConferenceDto> findUserRegistrations(User currentUser, Pageable pageable) {
+        return conferenceRepository.findRegisteredTrue(currentUser,pageable);
     }
 }

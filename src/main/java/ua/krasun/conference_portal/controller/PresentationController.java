@@ -52,4 +52,13 @@ public class PresentationController {
         model.addAttribute("presentations", presentationService.findAll());
         return "presentationEdit";
     }
+
+    @GetMapping("/delete/{presentation}")
+    public String presentationEditForm(@PathVariable Presentation presentation,
+                                       Model model){
+        presentationService.deletePresentation(presentation);
+        model.addAttribute("presentations", presentationService.findAll());
+        return "presentationEdit";
+    }
+
 }
