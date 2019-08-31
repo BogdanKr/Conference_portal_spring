@@ -41,8 +41,10 @@ public class MainController {
         return "welcome";
     }
 
-    @RequestMapping("/testData")
-    public String testData() {
-        return "testData";
+    @RequestMapping("/conference_all")
+    public String shoeAllConferences(@AuthenticationPrincipal User currentUser, Model model,
+                                     Pageable pageable) {
+        model.addAttribute("conferences", conferenceService.findAll(currentUser, pageable));
+        return "conferencesList";
     }
 }

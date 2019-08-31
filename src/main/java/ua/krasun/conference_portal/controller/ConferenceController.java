@@ -25,8 +25,11 @@ import java.util.TimeZone;
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/conference")
 public class ConferenceController {
-    @Autowired
-    ConferenceService conferenceService;
+    private final ConferenceService conferenceService;
+
+    public ConferenceController(ConferenceService conferenceService) {
+        this.conferenceService = conferenceService;
+    }
 
 
     @PostConstruct

@@ -1,17 +1,31 @@
 <#import "parts/common.ftl" as mymacro>
-<#import "parts/login.ftl" as mylogin>
+<#include "parts/security.ftl">
+
 
 <@mymacro.page>
-    <div class="mb-1"> <@spring.message "add_new_user"/> </div>
 
-    <#if message??>
-        <div class="alert alert-danger" role="alert">
-            ${message}
-        </div>
-    </#if>
+    <table>
+        <thead>
+        <tr>
+            <th><@spring.message "conference_day"/></th>
+            <th><@spring.message "subject"/> </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list conferences.content! as conference>
+            <tr>
+                <td>${conference.date}</td>
+                <td>${conference.subject}</td>
+                <#if (isAdmin)>
+                    <td><a href="/conference/${conference.id}"><@spring.message "edit"/></a></td>
+                </#if>
 
-    <@mylogin.login "/registration" true "Registration"/>
-
-    <a href="/login"><@spring.message "login"/></a>
+            </tr>
+        <#else >
+            <@spring.message "no_conferences"/>
+        </#list>
+        </tbody>
+    </table>
 
 </@mymacro.page>

@@ -39,7 +39,7 @@ public class PresentationController {
         return "redirect:/welcome";
     }
 
-    @GetMapping("/all")
+    @GetMapping("/all_my")
     public String myPresentations(@AuthenticationPrincipal User currentUser,
                                Model model) {
         model.addAttribute("presentations", presentationService.findByUser(currentUser));

@@ -8,7 +8,6 @@ import ua.krasun.conference_portal.repository.PresentationRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PresentationService {
@@ -40,9 +39,9 @@ public class PresentationService {
     }
 
     public List<Presentation> findByUser(User user) {
-        if (user.isAdmin()) return findAll();
-        else return presentationRepository.findAll().stream()
-                .filter(presentation -> presentation.getAuthor().equals(user))
-                .collect(Collectors.toList());
+        return presentationRepository.findByAuthor(user);
+//        return presentationRepository.findAll().stream()
+//                .filter(presentation -> presentation.getAuthor().equals(user))
+//                .collect(Collectors.toList());
     }
 }

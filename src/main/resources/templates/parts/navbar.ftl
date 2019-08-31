@@ -13,15 +13,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/welcome"><i class="fas fa-home"></i> </a>
             </li>
-            <li class="nav-item">
-                <#if isAdmin>
-                    <a class="nav-link" href="/presentation/all"><@spring.message "all_presentations"/> </a>
-                <#else >
-            <li class="nav-item"><a class="nav-link" href="/presentation/"><@spring.message "all_presentations"/> </a></li>
-                </#if>
-                <#if isSpeaker>
-                    <a class="nav-link" href="/presentation/all"><@spring.message "my_presentations"/></a>
-                </#if>
+            <li class="nav-item"><a class="nav-link" href="/conference_all"><@spring.message "all_conferences"/> </a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/presentation/"><@spring.message "all_presentations"/> </a>
+            </li>
+            <#if isSpeaker>
+                <a class="nav-link" href="/presentation/all_my"><@spring.message "my_presentations"/></a>
+            </#if>
             </li>
             <#if user??>
                 <li class="nav-item">

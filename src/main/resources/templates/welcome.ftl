@@ -27,11 +27,11 @@
                             <div class="col-md-autor"><a
                                         href="/conference/${conference.id}"><@spring.message "edit"/></a></div>
                         </#if>
+                    </div>
                         <#if (isSpeaker && conference.date.isAfter(dateNow))>
                             <div class="col-md-auto"><a href="/presentation/${conference.id}">
                                     <@spring.message "add_presentation"/></a></div>
                         </#if>
-                    </div>
                 </div>
 
                 <div class="card-body ">
