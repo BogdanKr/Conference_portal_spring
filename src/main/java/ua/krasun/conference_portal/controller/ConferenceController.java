@@ -79,6 +79,8 @@ public class ConferenceController {
         UriComponents uriComponents = UriComponentsBuilder.fromHttpUrl(referer).build();
         uriComponents.getQueryParams()
                 .forEach(redirectAttributes::addAttribute);
+        System.out.println("RequestHeader likes "+ referer);
+        System.out.println("uriComponents.getPath "+ uriComponents.getPath());
         return "redirect:" + uriComponents.getPath();
     }
 }

@@ -32,6 +32,7 @@ public class ConferenceService {
     }
 
     public void updateConference(Conference conference, LocalDate date, String subject) {
+        if (conference.getDate().equals(date) && conference.getSubject().equals(subject)) return;
         conference.setDate(date);
         conference.setSubject(subject);
         conferenceRepository.save(conference);
@@ -47,6 +48,6 @@ public class ConferenceService {
     }
 
     public Page<ConferenceDto> findUserRegistrations(User currentUser, Pageable pageable) {
-        return conferenceRepository.findRegisteredTrue(currentUser,pageable);
+        return conferenceRepository.findRegisteredTrue(currentUser, pageable);
     }
 }
