@@ -54,7 +54,7 @@ public class RegistrationController {
             @RequestParam(required = false) String roleType,
             @RequestParam("userId") User user) {
             userService.userEdit(firstName, email, password, active, roleType, user);
-        return "redirect:/welcome";
+        return "redirect:/user/userList";
     }
 
 

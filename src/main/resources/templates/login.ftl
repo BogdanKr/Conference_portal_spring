@@ -6,7 +6,6 @@
 
     <#if RequestParameters.error??>
         <div class="alert alert-danger" align="center">
-            <strong><@spring.message "invalid_login"/></strong>
             <br><@spring.message "invalid_name_password"/>
         </div>
     <#elseif RequestParameters.logout??>
