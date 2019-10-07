@@ -18,7 +18,7 @@
     <@p.pager url conferences/>
     <div class="card-columns">
         <#list conferences.content! as conference>
-            <div class="card<#if conference.date.isBefore(dateNow)> border-danger mb-3</#if>">
+            <div class="card<#if conference.date.isBefore(dateNow)> border-danger mb-3</#if>" <#if conference.date.isBefore(dateNow)> style="opacity: 0.5"</#if>>
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-5"> ${conference.date}</div>
@@ -43,7 +43,7 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody style="color: blue">
+                        <tbody style="color: #781a20">
                         <#list conference.presentations! as presentation>
                             <tr>
                                 <td>${presentation.author.firstName}</td>
