@@ -49,7 +49,7 @@ public class ConferenceController {
     @GetMapping("{conference}")
     public String userEditForm(@AuthenticationPrincipal User currentUser,
                                @PathVariable Conference conference, Model model,
-                               @PageableDefault(sort = {"date"}, direction = Sort.Direction.DESC, size = 6) Pageable pageable) {
+                               @PageableDefault(sort = {"date"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable) {
 
         model.addAttribute("conference", conference);
         model.addAttribute("dateNow", LocalDate.now());

@@ -37,7 +37,7 @@ public class MainController {
     @GetMapping("/welcome")
     public String welcomePage(@AuthenticationPrincipal User currentUser,
                               Model model,
-                              @PageableDefault(sort = {"date"}, direction = Sort.Direction.DESC, size = 6) Pageable pageable,
+                              @PageableDefault(sort = {"date"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable,
                               @RequestParam(name = "page", required = false) Integer page) {
         Page<ConferenceDto> conferences = conferenceService.findAll(currentUser, pageable);
         int totalPage = conferences.getTotalPages();

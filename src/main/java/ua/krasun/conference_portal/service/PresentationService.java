@@ -40,9 +40,6 @@ public class PresentationService {
 
     public List<Presentation> findByUser(User user) {
         return presentationRepository.findByAuthor(user);
-//        return presentationRepository.findAll().stream()
-//                .filter(presentation -> presentation.getAuthor().equals(user))
-//                .collect(Collectors.toList());
     }
 
     public void deletePresentation(Presentation presentation) {

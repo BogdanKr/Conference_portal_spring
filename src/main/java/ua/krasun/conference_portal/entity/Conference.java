@@ -20,7 +20,6 @@ public class Conference {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private LocalDate date;
     private String subject;
 
